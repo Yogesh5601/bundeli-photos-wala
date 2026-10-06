@@ -1,3 +1,4 @@
+import { Check } from "lucide-react";
 import { Eyebrow, GoldButton, PageHero, PageSpace, SectionLabel } from "@/components/site/editorial";
 import { bridalPackages, preBridalPackages } from "@/lib/content";
 import { pageMetadata } from "@/lib/page-metadata";
@@ -32,15 +33,28 @@ export default function PackagesPage() {
           {bridalPackages.map((pkg) => (
             <article
               key={pkg.title}
-              className={`interactive-card flex min-h-[310px] flex-col p-7 ${pkg.featured ? "border-gold bg-[#15100d] text-cream" : "border-[rgba(119,91,51,0.2)] bg-[rgba(255,255,255,0.35)]"}`}
+              className={`interactive-card relative flex min-h-[310px] flex-col p-7 ${pkg.featured ? "border-gold bg-[#15100d] text-cream" : "border-[rgba(119,91,51,0.2)] bg-[rgba(255,255,255,0.35)]"}`}
             >
+              {pkg.featured && <span className="package-ribbon package-ribbon-on-dark">Most chosen</span>}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={pkg.image} alt={pkg.alt} loading="lazy" className="mb-4 h-40 w-full object-cover" />
               <span className="text-[9px] tracking-[0.18em] text-gold">{pkg.num}</span>
               <h3 className="mt-10 font-serif text-4xl">{pkg.title}</h3>
-              <strong className="mt-6 font-serif text-4xl text-gold">{pkg.price}</strong>
+              <strong className={`mt-6 font-serif text-4xl ${pkg.featured ? "text-gold2" : "text-gold"}`}>{pkg.price}</strong>
               <small className="mt-2 text-[9px] tracking-[0.14em] uppercase">Per session</small>
-              <GoldButton href="/book" className="mt-auto pt-6">
+              <ul className="mt-5 space-y-2 border-t border-gold/20 pt-5">
+                {pkg.includes.map((line) => (
+                  <li key={line} className="flex items-start gap-2 font-serif text-sm leading-snug text-prose-muted">
+                    <Check className={`mt-0.5 size-3.5 shrink-0 ${pkg.featured ? "text-gold2" : "text-gold"}`} aria-hidden />
+                    <span className={pkg.featured ? "text-[#d7c9b4]" : undefined}>{line}</span>
+                  </li>
+                ))}
+              </ul>
+              <GoldButton
+                href="/book"
+                variant={pkg.featured ? "gold" : "outline"}
+                className={`mt-auto pt-6 ${pkg.featured ? "" : "border-gold/35"}`}
+              >
                 Book your appointment ↗
               </GoldButton>
             </article>

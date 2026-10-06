@@ -19,11 +19,19 @@ export function PackagePreviewBlock() {
       <div className="package-preview-grid">
         {packagePreview.map((pkg, i) => (
           <Reveal key={pkg.title} delay={i * 70} className="h-full">
-            <article className={`package-preview-card h-full ${pkg.featured ? "featured" : ""}`}>
+            <article className={`package-preview-card relative h-full ${pkg.featured ? "featured" : ""}`}>
+              {pkg.featured && <span className="package-ribbon">Most chosen</span>}
               <span>{pkg.num}</span>
               <h3>{pkg.title}</h3>
               <strong>{pkg.price}</strong>
               <p>{pkg.description}</p>
+              {"includes" in pkg && pkg.includes && (
+                <ul className="package-includes mt-4 space-y-1.5 border-t border-[rgba(239,211,155,0.2)] pt-4">
+                  {pkg.includes.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              )}
             </article>
           </Reveal>
         ))}

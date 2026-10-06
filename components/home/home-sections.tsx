@@ -1,21 +1,12 @@
 import Link from "next/link";
-import { experienceCards, hairStylingItems, site } from "@/lib/content";
+import { experienceCards, galleryPreviewItems, hairStylingItems, site } from "@/lib/content";
 import { Eyebrow, GoldButton, SectionLabel, TextLink } from "@/components/site/editorial";
 import { ExperienceStatBar } from "@/components/site/experience-stat-bar";
+import { GalleryPreviewCell } from "@/components/home/gallery-preview-cell";
 import { PackagePreviewBlock } from "@/components/home/package-preview-cards";
+import { TestimonialsSection } from "@/components/home/testimonials-section";
 import { Reveal } from "@/components/site/reveal";
 import { Section, SectionIntro } from "@/components/site/section";
-
-const galleryPreview = [
-  "/uploads/5M2A3131.JPG.jpg",
-  "/uploads/5M2A3117.JPG.jpg",
-  "/uploads/5M2A3268.JPG.jpg",
-  "/uploads/5M2A3653.JPG.jpg",
-  "/uploads/5M2A3242.JPG.jpg",
-  "/uploads/5M2A8926.JPG.jpg",
-  "/uploads/5M2A3496.JPG.jpg",
-  "/uploads/5M2A3612.JPG.jpg",
-];
 
 export function HomeSections() {
   return (
@@ -275,23 +266,28 @@ export function HomeSections() {
         </div>
         <div className="hair-grid grid grid-cols-1 items-start gap-3.5 sm:grid-cols-2 lg:grid-cols-12">
           {hairStylingItems.map((item, index) => (
-            <figure
+            <Reveal
               key={item.num}
-              className={`relative m-0 overflow-hidden border border-[rgba(239,211,155,0.18)] bg-[#120d0c] shadow-[0_18px_48px_rgba(0,0,0,0.2)] ${item.tall ? "h-[clamp(450px,50vw,700px)]" : "h-[clamp(390px,43vw,610px)]"} ${index === 3 ? "lg:col-start-2 lg:col-span-4" : "lg:col-span-4"} ${index === 5 ? "lg:mt-10" : ""} sm:col-span-1`}
+              delay={index * 70}
+              className={`${index === 3 ? "lg:col-start-2 lg:col-span-4" : "lg:col-span-4"} ${index === 5 ? "lg:mt-10" : ""} sm:col-span-1`}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.src}
-                alt={item.alt}
-                loading="lazy"
-                className={`block h-full w-full object-cover saturate-[0.88] transition duration-1000 hover:scale-[1.045] hover:saturate-100 ${index === 0 ? "object-[center_44%]" : index === 1 ? "object-[center_43%]" : index === 3 ? "object-[center_48%]" : index === 4 ? "object-[center_52%]" : index === 5 ? "object-[center_47%]" : "object-[center_50%]"}`}
-              />
-              <span className="pointer-events-none absolute inset-0 bg-linear-to-t from-[rgba(7,5,4,0.82)] from-0% to-transparent to-55%" />
-              <figcaption className="absolute right-6 bottom-5 left-6 z-2 flex items-end justify-between gap-4 text-white">
-                <span className="text-[10px] tracking-[0.18em] text-gold2">{item.num}</span>
-                <strong className="text-right font-serif text-[clamp(20px,2vw,28px)] leading-none font-normal">{item.title}</strong>
-              </figcaption>
-            </figure>
+              <figure
+                className={`relative m-0 overflow-hidden border border-[rgba(239,211,155,0.18)] bg-[#120d0c] shadow-[0_18px_48px_rgba(0,0,0,0.2)] ${item.tall ? "h-[clamp(450px,50vw,700px)]" : "h-[clamp(390px,43vw,610px)]"}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  className={`block h-full w-full object-cover saturate-[0.88] transition duration-1000 hover:scale-[1.045] hover:saturate-100 ${index === 0 ? "object-[center_44%]" : index === 1 ? "object-[center_43%]" : index === 3 ? "object-[center_48%]" : index === 4 ? "object-[center_52%]" : index === 5 ? "object-[center_47%]" : "object-[center_50%]"}`}
+                />
+                <span className="pointer-events-none absolute inset-0 bg-linear-to-t from-[rgba(7,5,4,0.82)] from-0% to-transparent to-55%" />
+                <figcaption className="absolute right-6 bottom-5 left-6 z-2 flex items-end justify-between gap-4 text-white">
+                  <span className="text-[10px] tracking-[0.18em] text-gold2">{item.num}</span>
+                  <strong className="text-right font-serif text-[clamp(20px,2vw,28px)] leading-none font-normal">{item.title}</strong>
+                </figcaption>
+              </figure>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -378,25 +374,24 @@ export function HomeSections() {
           />
         </Reveal>
         <div className="mt-12 grid grid-cols-2 gap-3 lg:grid-cols-4 lg:grid-rows-2">
-          {galleryPreview.map((src, i) => (
+          {galleryPreviewItems.map((item, i) => (
             <Reveal
-              key={src}
+              key={item.src}
               delay={i * 45}
               className={`${i === 0 ? "lg:row-span-2" : ""} ${i === 3 ? "lg:col-span-2" : ""}`}
             >
-              <Link href="/gallery" className="gallery-preview-cell block h-full">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={src}
-                  alt="Portfolio preview"
-                  loading="lazy"
-                  className={i === 0 ? "lg:h-full lg:min-h-[520px]" : ""}
-                />
-              </Link>
+              <GalleryPreviewCell
+                src={item.src}
+                alt={item.alt}
+                category={item.category}
+                imageClassName={i === 0 ? "lg:h-full lg:min-h-[520px]" : undefined}
+              />
             </Reveal>
           ))}
         </div>
       </Section>
+
+      <TestimonialsSection />
 
       <Section
         id="packages"

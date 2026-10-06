@@ -32,7 +32,7 @@ export function GoldButton({
         : "rounded-none border border-gold/35 bg-transparent text-inherit hover:border-gold2 hover:text-gold2 text-[9px] uppercase tracking-[0.18em] h-auto px-5 py-4";
 
   const shared = cn(
-    "inline-flex items-center gap-2 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold2/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+    "btn-link-motion inline-flex items-center gap-2 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold2/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
     styles,
     className,
   );
@@ -57,7 +57,7 @@ export function TextLink({ href, children, className }: { href: string; children
     <Link
       href={href}
       className={cn(
-        "inline-block border-b border-gold2/50 pb-2 text-[9px] uppercase tracking-[0.18em] transition-colors hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50",
+        "text-link-motion inline-block border-b border-gold2/50 pb-2 text-[9px] uppercase tracking-[0.18em] transition-colors hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50",
         className,
       )}
     >

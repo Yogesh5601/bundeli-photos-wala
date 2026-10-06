@@ -155,18 +155,115 @@ export const hairStylingItems = [
 ];
 
 export const packagePreview = [
-  { num: "01", title: "BRIDAL 3D", price: "₹15,000", description: "Refined bridal artistry for your wedding day." },
-  { num: "02", title: "HD BRIDAL", price: "₹18,000", description: "A polished, camera-ready bridal finish.", featured: true },
-  { num: "03", title: "AIR BRUSH", price: "₹25,000", description: "Lightweight, seamless beauty for your celebration." },
+  {
+    num: "01",
+    title: "BRIDAL 3D",
+    price: "₹15,000",
+    description: "Refined bridal artistry for your wedding day.",
+    includes: ["Skin prep & base", "Eye & lip detail", "Long-wear finish"],
+  },
+  {
+    num: "02",
+    title: "HD BRIDAL",
+    price: "₹18,000",
+    description: "A polished, camera-ready bridal finish.",
+    featured: true,
+    includes: ["HD complexion finish", "Camera-ready eyes", "Premium products", "Touch-up guidance"],
+  },
+  {
+    num: "03",
+    title: "AIR BRUSH",
+    price: "₹25,000",
+    description: "Lightweight, seamless beauty for your celebration.",
+    includes: ["Airbrush base", "Flawless blend", "All-day comfort", "Event-ready glow"],
+  },
 ];
 
 export const bridalPackages = [
-  { num: "01", title: "3D Makeup", price: "₹15,000", image: "/uploads/1003241437.jpg.jpg", alt: "3D bridal makeup look" },
-  { num: "02", title: "HD Makeup", price: "₹18,000", image: "/uploads/5M2A8926.JPG.jpg", alt: "HD bridal makeup look", featured: true },
-  { num: "03", title: "Air Brush", price: "₹25,000", image: "/uploads/547458.jpg.jpg", alt: "Air brush makeup look" },
-  { num: "04", title: "Ideal Groom Makeup", price: "₹5,000", image: "/uploads/23ce4de3-4de1-4d65-a01a-57343a5e9ee5.png", alt: "Groom makeup styling" },
-  { num: "05", title: "Trial Makeup", price: "₹3,000", image: "/uploads/d1e7f58e-caab-4b6a-b536-05ee6a6d7877.jpg", alt: "Trial makeup editorial look" },
+  {
+    num: "01",
+    title: "3D Makeup",
+    price: "₹15,000",
+    image: "/uploads/1003241437.jpg.jpg",
+    alt: "3D bridal makeup look",
+    includes: ["Personal consultation", "Skin preparation", "3D contour & highlight", "Eye & lip artistry", "Long-wear setting"],
+  },
+  {
+    num: "02",
+    title: "HD Makeup",
+    price: "₹18,000",
+    image: "/uploads/5M2A8926.JPG.jpg",
+    alt: "HD bridal makeup look",
+    featured: true,
+    includes: ["HD skin finish", "Camera-ready detail", "Premium product kit", "Customized eye look", "Bridal touch-up tips"],
+  },
+  {
+    num: "03",
+    title: "Air Brush",
+    price: "₹25,000",
+    image: "/uploads/547458.jpg.jpg",
+    alt: "Air brush makeup look",
+    includes: ["Airbrush application", "Seamless complexion", "Water-resistant wear", "Full face artistry", "Celebration-ready finish"],
+  },
+  {
+    num: "04",
+    title: "Ideal Groom Makeup",
+    price: "₹5,000",
+    image: "/uploads/23ce4de3-4de1-4d65-a01a-57343a5e9ee5.png",
+    alt: "Groom makeup styling",
+    includes: ["Natural groom grooming", "Even skin tone", "Subtle definition"],
+  },
+  {
+    num: "05",
+    title: "Trial Makeup",
+    price: "₹3,000",
+    image: "/uploads/d1e7f58e-caab-4b6a-b536-05ee6a6d7877.jpg",
+    alt: "Trial makeup editorial look",
+    includes: ["Look exploration", "Product patch test", "Style notes for the day"],
+  },
 ];
+
+export const galleryPreviewItems: Pick<GalleryItem, "src" | "alt" | "category">[] = [
+  { src: "/uploads/5M2A3131.JPG.jpg", alt: "Reception makeup close-up", category: "reception" },
+  { src: "/uploads/5M2A3117.JPG.jpg", alt: "Reception makeup close-up", category: "reception" },
+  { src: "/uploads/5M2A3268.JPG.jpg", alt: "Warm copper party makeup portrait", category: "party" },
+  { src: "/uploads/5M2A3653.JPG.jpg", alt: "Red traditional reception makeup portrait", category: "traditional" },
+  { src: "/uploads/5M2A3242.JPG.jpg", alt: "Editorial traditional makeup portrait", category: "editorial" },
+  { src: "/uploads/5M2A8926.JPG.jpg", alt: "Red bridal jewellery and makeup", category: "bridal" },
+  { src: "/uploads/5M2A3496.JPG.jpg", alt: "Copper party makeup look", category: "party" },
+  { src: "/uploads/5M2A3612.JPG.jpg", alt: "Bridal makeup artistry", category: "bridal" },
+];
+
+export const testimonials = [
+  {
+    quote:
+      "My bridal look felt so personal — every detail was thoughtful, and I still felt like myself, just elevated.",
+    name: "Aditi K.",
+    occasion: "Bridal · Sangli",
+  },
+  {
+    quote:
+      "The HD finish photographed beautifully. Calm, professional, and exactly the soft glam I wanted for my reception.",
+    name: "Priya M.",
+    occasion: "Reception · Kolhapur",
+  },
+  {
+    quote:
+      "From consultation to the final touch-up, the experience felt luxury in the truest sense. Highly recommended.",
+    name: "Sneha R.",
+    occasion: "Engagement · Sangli",
+  },
+] as const;
+
+export const footerServices = [
+  { label: "Bridal makeup", href: "/gallery?category=bridal" },
+  { label: "Party makeup", href: "/gallery?category=party" },
+  { label: "Reception makeup", href: "/gallery?category=reception" },
+  { label: "Engagement makeup", href: "/gallery?category=engagement" },
+  { label: "Traditional makeup", href: "/gallery?category=traditional" },
+  { label: "Pre-bridal makeup", href: "/packages" },
+  { label: "Professional makeup academy", href: "/academy" },
+] as const;
 
 export const preBridalPackages = [
   { title: "Premium Luxury Package", price: "₹24,999", tag: "Signature edit", description: "Curated beauty care for a considered pre-bridal experience.", image: "/uploads/5M2A8982.JPG.jpg", alt: "Premium pre-bridal traditional makeup look" },

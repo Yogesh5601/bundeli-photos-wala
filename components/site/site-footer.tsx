@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navLinks, site } from "@/lib/content";
+import { footerServices, navLinks, site } from "@/lib/content";
 
 export function SiteFooter() {
   return (
@@ -27,16 +27,10 @@ export function SiteFooter() {
       </div>
       <div className="flex flex-col gap-3 text-[9px] uppercase tracking-[0.1em] text-[#a4937e]">
         <b className="mb-2 font-normal tracking-[0.18em] text-gold2">Services</b>
-        {[
-          "Bridal makeup",
-          "Party makeup",
-          "Reception makeup",
-          "Engagement makeup",
-          "Traditional makeup",
-          "Pre-bridal makeup",
-          "Professional makeup academy",
-        ].map((item) => (
-          <span key={item}>{item}</span>
+        {footerServices.map((item) => (
+          <Link key={item.label} href={item.href} className="hover:text-gold2">
+            {item.label}
+          </Link>
         ))}
       </div>
       <div className="flex flex-col gap-3 text-[9px] uppercase tracking-[0.1em] text-[#a4937e]">

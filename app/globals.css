@@ -447,13 +447,51 @@
     @apply absolute inset-x-0 bottom-0 z-2 bg-linear-to-t from-black/85 via-black/45 to-transparent px-6 pt-16 pb-6;
   }
   .gallery-preview-cell {
-    @apply relative block overflow-hidden bg-[#e8dfd4];
+    @apply relative block overflow-hidden border border-[rgba(119,91,51,0.15)] bg-[#e8dfd4] transition duration-500 hover:border-gold/45;
   }
   .gallery-preview-cell img {
     @apply h-[210px] w-full object-cover object-[center_24%] transition duration-[750ms] ease-out lg:h-[250px];
   }
   .gallery-preview-cell:hover img {
     @apply scale-[1.04];
+  }
+  .gallery-preview-overlay {
+    @apply pointer-events-none absolute inset-0 bg-linear-to-t from-black/78 via-black/15 to-transparent opacity-85 transition duration-500 group-hover:from-black/88;
+  }
+  .gallery-preview-meta {
+    @apply absolute right-4 bottom-4 left-4 z-2 flex items-end justify-between gap-3;
+  }
+  .testimonial-card {
+    @apply border border-[rgba(119,91,51,0.22)] bg-[rgba(255,255,255,0.55)] p-7 shadow-[0_12px_40px_rgba(67,44,18,0.06)] transition duration-500 hover:-translate-y-0.5 hover:border-gold/40 hover:shadow-[0_18px_48px_rgba(67,44,18,0.1)];
+  }
+  .package-ribbon {
+    @apply absolute top-0 right-0 bg-gold2 px-3 py-1.5 text-[8px] font-medium tracking-[0.18em] text-ink uppercase;
+  }
+  .package-ribbon-on-dark {
+    @apply bg-gold2 text-ink;
+  }
+  .package-includes li {
+    @apply text-[11px] leading-snug tracking-[0.04em] text-[#d7c9b4];
+  }
+  .package-preview-card:not(.featured) .package-includes li {
+    @apply text-[#534a3d];
+  }
+  .btn-link-motion {
+    @apply transition-[transform,box-shadow,background-color,border-color,color] duration-300 ease-out;
+  }
+  .btn-link-motion:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 28px rgba(67, 44, 18, 0.12);
+  }
+  .text-link-motion {
+    @apply relative transition-[color,letter-spacing,border-color] duration-300;
+  }
+  .text-link-motion:hover {
+    letter-spacing: 0.2em;
+    border-color: var(--gold);
+  }
+  .lightbox-counter-pill {
+    @apply rounded-full border border-white/15 bg-black/55 px-3 py-1 text-[10px] tracking-[0.16em] text-cream uppercase backdrop-blur-sm;
   }
   .bridal-grid img {
     @apply min-h-0;
